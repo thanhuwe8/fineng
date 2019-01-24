@@ -10,3 +10,6 @@ use_vignette("fineng-vignette")
 use_readme_rmd()
 use_description()
 use_rcpp()
+
+library(pracma)
+plot(gaussLaguerre(10)$w)
