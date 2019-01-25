@@ -42,6 +42,7 @@ GenerateGaussLaguerreR <- function(n){
 #' @export
 #'
 #' @examples
+#' GenerateGaussLegendre(5)
 GenerateGaussLegendre <- function(n){
     m <- floor(n/2)
     L <- NULL
