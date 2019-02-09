@@ -16,9 +16,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// timesfive
+NumericVector timesfive(NumericVector x);
+RcppExport SEXP _fineng_timesfive(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(timesfive(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_fineng_timesTwo", (DL_FUNC) &_fineng_timesTwo, 1},
+    {"_fineng_timesfive", (DL_FUNC) &_fineng_timesfive, 1},
     {NULL, NULL, 0}
 };
 

@@ -24,48 +24,70 @@ You can install the released version of fineng with
 devtools::install_github("fineng")
 ```
 
+## New Updates on February 2019
+- Simulation for Contiuous and Discrete Geometric Brownian Motion
+- Finite-Difference Approximations, Pathwise derivative and Likelihood Ratio method for Option Greeks 
+- Control Variates, Antithetic Variates and Stratified Sampling
+
 ## Plan for development
 We plan to add the following features in the next releases:
 
 - Heston Model with Newton-Cotes and Gaussian Quadrature (only Mid-point rule is currently supported)
-- Simulation of symmetric random walk, scaled random walk, Brownian motion and Jump Diffusion Process.
+- Simulation of symmetric random walk, scaled random walk and Jump Diffusion Process.
 - Brownian Bridge
 - American Option Pricing using Monte Carlo simulation
+- Rcpp for high-performance computation.
+
 
 ## Usage
 
-```{R example}
-### Load library
+### Geometric Brownian Motion Simulation
+``` {R GBM}
 library(fineng)
+SinglePath <- SimGBM(100,0.03,0.25,2,100,"discrete")
+Path100 <- SimDGBM(100,0.03,0.25,2,100,10,"continuous")
+Path100Terminal <- SimTGBM(100,0.03,0.25,2,100,10,"continuous")
 
+head(SinglePath)
+knitr::kable(head(Path100,10))
+knitr::kable(Path100Terminal)
+```
+
+
+### Heston model
+```{R example}
 ### Necessary Paramters
-PutCall<- "Call"
-S=100
-K=100
-tau=0.5
-r=0.03
-q=0.02
-kappa=0.2
-theta=0.25
-sigma=0.3
-lambda=0
-v0=0.02
-rho=-0.8
-N=1000
-a=1e-5
-b=100
+PutCall <- "Call"
+# Option Properties
+S = 100
+K = 100
+tau = 0.5
+r = 0.03
+q = 0.02
+# Heston model Properties
+kappa = 0.2
+theta = 0.25
+sigma = 0.3
+lambda = 0
+v0 = 0.02
+rho = -0.8
+# Mid-point Properties
+N = 1000
+a = 1e-5
+b = 100
 
 ### Heston Price using Mid-point integration rule
-
-result <- HestonPriceMP(PutCall,S,K,tau,r,q,kappa,theta,sigma,lambda,v0,rho,N,a,b)
+result <- HestonPriceMP(PutCall, S, K, tau, r, q, kappa, theta, sigma, lambda, v0, rho, N, a, b)
 print(result)
-```
-```{R example2}
+
 ### Comparison with Black-Scholes model
 
-BLresult <- BlackScholes("Call",S=100, K=100,tau=0.5,0.03,0.02,0.25)
+BLresult <- BlackScholes("Call",S = 100, K = 100, tau = 0.5, r = 0.03, q = 0.02, sigma = 0.25)
 print(BLresult)
 
 ```
 
-
+## Citation
+- Glasserman, Paul. Monte Carlo methods in financial engineering. Vol. 53. Springer Science & Business Media, 2013.
+- Jäckel, Peter. Monte Carlo methods in finance. J. Wiley, 2002.
+- Heston, Steven L. "A closed-form solution for options with stochastic volatility with applications to bond and currency options." The review of financial studies 6.2 (1993): 327-343.

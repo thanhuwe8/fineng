@@ -6,3 +6,8 @@ timesTwo <- function(x) {
     .Call('_fineng_timesTwo', PACKAGE = 'fineng', x)
 }
 
+#' @export
+timesfive <- function(x) {
+    .Call('_fineng_timesfive', PACKAGE = 'fineng', x)
+}
+
