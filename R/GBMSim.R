@@ -37,6 +37,7 @@ SimGBM <- function(S0, mu, sigma, time, steps, type){
         # discrete method suggested by John C Hull
         for (i in 2:length(ST)){
             # Cannot pre-initialize due to dependence on ST
+            # We use for-loop here, note for potential structural improvement
             ST[i] <- ST[i-1]*mu*dt + ST[i-1]*sigma*sqrt(dt)*rnorm(n=1, mean=0, sd=1)
             ST[i] <- ST[i] + ST[i-1]
         }

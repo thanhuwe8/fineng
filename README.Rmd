@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 ```
 # fineng
 
-The package provides routines to calculate option prices using different closed-form solutions and simulations
+The package provides routines to calculate option prices using different closed-form solutions and Monte-Carlo simulations based on different stochastic motions
 
 ## Installation
 
@@ -77,14 +77,11 @@ a = 1e-5
 b = 100
 
 ### Heston Price using Mid-point integration rule
-result <- HestonPriceMP(PutCall, S, K, tau, r, q, kappa, theta, sigma, lambda, v0, rho, N, a, b)
-print(result)
+HestonPriceMP(PutCall, S, K, tau, r, q, kappa, theta, sigma, lambda, v0, rho, N, a, b)
 
 ### Comparison with Black-Scholes model
 
-BLresult <- BlackScholes("Call",S = 100, K = 100, tau = 0.5, r = 0.03, q = 0.02, sigma = 0.25)
-print(BLresult)
-
+BlackScholes("Call",S = 100, K = 100, tau = 0.5, r = 0.03, q = 0.02, sigma = 0.3)
 ```
 
 ## Citation
