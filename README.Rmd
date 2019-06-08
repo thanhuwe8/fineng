@@ -88,3 +88,6 @@ BlackScholes("Call",S = 100, K = 100, tau = 0.5, r = 0.03, q = 0.02, sigma = 0.3
 - Glasserman, Paul. Monte Carlo methods in financial engineering. Vol. 53. Springer Science & Business Media, 2013.
 - Jäckel, Peter. Monte Carlo methods in finance. J. Wiley, 2002.
 - Heston, Steven L. "A closed-form solution for options with stochastic volatility with applications to bond and currency options." The review of financial studies 6.2 (1993): 327-343.
+
+## License
+This project is licensed unnder the GPL3 License
