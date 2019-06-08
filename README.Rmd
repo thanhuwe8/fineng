@@ -90,4 +90,4 @@ BlackScholes("Call",S = 100, K = 100, tau = 0.5, r = 0.03, q = 0.02, sigma = 0.3
 - Heston, Steven L. "A closed-form solution for options with stochastic volatility with applications to bond and currency options." The review of financial studies 6.2 (1993): 327-343.
 
 ## License
-This project is licensed unnder the GPL3 License
+This project is licensed under the GPL3 License
